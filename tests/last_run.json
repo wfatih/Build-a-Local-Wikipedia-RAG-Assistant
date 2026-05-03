@@ -1,0 +1,259 @@
+[
+  {
+    "label": "people-1",
+    "query": "Who was Albert Einstein and what is he known for",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Albert Einstein was a German-born theoretical physicist who is best known for developing the theory of relativity, which includes his famous mass-energy equivalence formula E = mc2 [1]. He also made important contributions to quantum theory and was awarded the 1921 Nobel Prize in Physics for his work on the photoelectric effect [1]. As a result of his groundbreaking discoveries, Einstein became an intellectual icon, widely recognized and admired by the public, who would often stop him on the street to ask him to explain his theories [5]. He is also famously depicted as a genius in popular culture, with his image being used in numerous works of music, films, plays, and literature [5].",
+    "route": "person",
+    "entities": [
+      "Albert Einstein"
+    ],
+    "elapsed": 6.449904441833496
+  },
+  {
+    "label": "people-2",
+    "query": "What did Marie Curie discover",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Marie Curie discovered the elements radium and polonium, which she isolated and studied, leading to her 1911 Nobel Prize in Chemistry [2]. Her research on radioactivity phenomena was also recognized by the Nobel Committee, although it was not specifically awarded to her until the 1903 Nobel Prize in Physics shared with her husband Pierre Curie [1].",
+    "route": "person",
+    "entities": [
+      "Marie Curie"
+    ],
+    "elapsed": 3.640268087387085
+  },
+  {
+    "label": "people-3",
+    "query": "Why is Nikola Tesla famous",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Nikola Tesla is famous for his contributions to the design of the modern alternating current (AC) electricity supply system, earning him a considerable amount of money and patents through his work with Westinghouse Electric in 1888 [1]. He conducted a range of experiments with mechanical oscillators/generators, electrical discharge tubes, and early X-ray imaging among other things, but after spending most of his money, he lived in poverty until his death in 1943 [3]. Tesla's work fell into relative obscurity following his death, but was rediscovered and recognized through the naming of the International System of Units (SI) measurement of magnetic flux density the tesla in his honor in 1960 [3], and more recently, he was named one of the 100 most significant figures of all time by Time magazine in 2013 [3].",
+    "route": "person",
+    "entities": [
+      "Nikola Tesla"
+    ],
+    "elapsed": 4.641390800476074
+  },
+  {
+    "label": "people-4",
+    "query": "Compare Lionel Messi and Cristiano Ronaldo",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Lionel Messi and Cristiano Ronaldo are widely regarded as two of the greatest players in history, with numerous records between them for individual accolades won throughout their careers [1]. Both have been involved in high-profile rivalries, with some commentators analyzing their differing physiques and playing styles, while others focus on their contrasting personalities, with Ronaldo often depicted as arrogant and theatrical, and Messi portrayed as shy and humble [4]. Despite this, both players have expressed a mutual respect for each other's abilities, with Ronaldo stating that the rivalry pushes them to compete at a high level [1].",
+    "route": "person",
+    "entities": [
+      "Cristiano Ronaldo",
+      "Lionel Messi"
+    ],
+    "elapsed": 4.166079998016357
+  },
+  {
+    "label": "people-5",
+    "query": "What is Frida Kahlo known for",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Frida Kahlo is known for her many portraits, self-portraits, and works inspired by the nature and artifacts of Mexico [1]. Her paintings often explored questions of identity, postcolonialism, gender, class, and race in Mexican society [1]. She is also known for painting about her experience of chronic pain [1]. Additionally, Kahlo's reputation as an artist developed late in her life and grew even further posthumously, with feminist scholars questioning the exclusion of female artists from the art historical canon and the Chicano Movement lifting her as one of their icons [2].",
+    "route": "person",
+    "entities": [
+      "Frida Kahlo"
+    ],
+    "elapsed": 4.189546823501587
+  },
+  {
+    "label": "places-1",
+    "query": "Where is the Eiffel Tower located",
+    "status": "PASS",
+    "msg": "",
+    "answer": "The Eiffel Tower is located in Paris, France [1]. It can be reached by taking the Bir-Hakeim or Champ de Mars-Tour Eiffel Metro station, with its base situated at the intersection of quai Branly and Pont d'Iéna [2]. The tower has inspired numerous replicas around the world, including Blackpool Tower in England and Tokyo Tower in Japan [3], and can be found in various scale models in the United States, China, Europe, Mexico, and other locations [3].",
+    "route": "place",
+    "entities": [
+      "Eiffel Tower"
+    ],
+    "elapsed": 3.9572229385375977
+  },
+  {
+    "label": "places-2",
+    "query": "Why is the Great Wall of China important",
+    "status": "PASS",
+    "msg": "",
+    "answer": "The Great Wall of China is important because it was built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe [1]. The wall system was expanded by successive dynasties, with the Ming dynasty being particularly notable for its well-known sections [2]. The Great Wall also played a role in border controls, trade regulation, and transportation corridors [1]. Its significance has been recognized by UNESCO, which designated it as a World Heritage Site [5].",
+    "route": "place",
+    "entities": [
+      "Great Wall of China"
+    ],
+    "elapsed": 4.040181636810303
+  },
+  {
+    "label": "places-3",
+    "query": "What is Machu Picchu",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Machu Picchu is an Inca citadel located in southern Peru on a mountain ridge at 2,430 meters, situated about 80 kilometers northwest of Cusco [1]. It was built around 1450 and served as an estate for the Inca emperor Pachacuti, featuring finely crafted dry-stone walls and notable structures like the Temple of the Sun and the Intihuatana ritual stone [1]. The site has appeared in several films, including Secret of the Incas (1954) and Aguirre, the Wrath of God (1972), and is a major tourist destination, with over 1.5 million visitors annually, making it Peru's most visited international tourist destination [3].",
+    "route": "place",
+    "entities": [
+      "Machu Picchu"
+    ],
+    "elapsed": 4.4453911781311035
+  },
+  {
+    "label": "places-4",
+    "query": "What was the Colosseum used for",
+    "status": "PASS",
+    "msg": "",
+    "answer": "The Colosseum was primarily used for gladiatorial contests and public spectacles, including animal hunts, executions, re-enactments of famous battles, dramas based on Roman mythology, and mock sea battles [1]. It was not regarded as a sacred site in the Middle Ages, but was instead used as a \"quarry\" for building other sacred sites, with stones from the Colosseum being taken to construct other monuments [2]. The majority of Christian martyrs were executed at the Circus Maximus rather than the Colosseum, although some Christians were executed there for refusing to reverence Roman gods [3].",
+    "route": "place",
+    "entities": [
+      "Colosseum"
+    ],
+    "elapsed": 4.2856833934783936
+  },
+  {
+    "label": "places-5",
+    "query": "Where is Mount Everest",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Mount Everest is located in the Mahalangur Himal sub-range of the Himalayas, marking part of the China–Nepal border at its summit [1]. It is also known as Sagarmāthā in Nepal and Qomolangma in Tibet [1]. The closest sea to Mount Everest's summit is the Bay of Bengal, almost 700 km away [1].",
+    "route": "place",
+    "entities": [
+      "Mount Everest"
+    ],
+    "elapsed": 3.5946314334869385
+  },
+  {
+    "label": "mixed-1",
+    "query": "Which famous place is located in Turkey",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Pamukkale and Ephesus are two famous places mentioned in the context. Pamukkale is located in Turkey's Inner Aegean region [1], while Ephesus is not explicitly stated to be in Turkey but rather in a different location, as indicated by its mention alongside other ancient Greek cities like Hierapolis, which was built on top of the travertine formation in Pamukkale [1].",
+    "route": "place",
+    "entities": [
+      "Mount Fuji",
+      "Pamukkale",
+      "Petra",
+      "Sydney Opera House",
+      "Vatican City"
+    ],
+    "elapsed": 3.860787868499756
+  },
+  {
+    "label": "mixed-2",
+    "query": "Which person is associated with electricity",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Isaac Newton is associated with electricity [1], recognizing its role in nature and proposing that it could be responsible for various phenomena, including the emission, reflection, refraction, inflection, and heating effects of light. Nikola Tesla, on the other hand, is known for his contributions to the design of the modern alternating current (AC) electricity supply system [2]. Marie Curie's work involved radioactivity, a phenomenon that was discovered by Henri Becquerel, but she did not specifically study electricity in her research [3]. Albert Einstein's name has been associated with various geographical locations, including Mount Einstein in Alaska and New Zealand, named after him in 1955 and 1970 respectively [4], but there is no direct connection between his name and the concept of electricity.",
+    "route": "person",
+    "entities": [
+      "Albert Einstein",
+      "Isaac Newton",
+      "Marie Curie",
+      "Nikola Tesla"
+    ],
+    "elapsed": 4.74212121963501
+  },
+  {
+    "label": "mixed-3",
+    "query": "Compare Albert Einstein and Nikola Tesla",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Albert Einstein and Nikola Tesla were two influential figures in the history of physics, with distinct contributions to their respective fields. Einstein is best known for developing the theory of relativity and his mass-energy equivalence formula E = mc2 [1], which revolutionized our understanding of space and time. In contrast, Tesla made significant contributions to the design of the modern alternating current (AC) electricity supply system [3]. While both men were pioneers in their fields, they had differing views on nationalism and politics, with Einstein opposing the creation of an independent Jewish state and Tesla not being explicitly mentioned as having such a stance in the provided context. Despite these differences, both scientists left lasting legacies that continue to shape our understanding of the world [1][3].",
+    "route": "person",
+    "entities": [
+      "Albert Einstein",
+      "Nikola Tesla"
+    ],
+    "elapsed": 4.246853828430176
+  },
+  {
+    "label": "mixed-4",
+    "query": "Compare the Eiffel Tower and the Statue of Liberty",
+    "status": "PASS",
+    "msg": "",
+    "answer": "The Eiffel Tower and the Statue of Liberty are two iconic structures with distinct histories. The Eiffel Tower was designed by Gustave Eiffel and built for the 1889 World's Fair in Paris, France, while the Statue of Liberty was a gift from the people of France to the United States, designed by Frédéric Auguste Bartholdi and built by Gustave Eiffel. The Eiffel Tower is 330 metres tall and has become a global cultural icon, with over 6 million visitors in 2015 [1]. In contrast, the Statue of Liberty was dedicated on October 28, 1886, and is a symbol of freedom and democracy, with its own unique history and significance as a UNESCO World Heritage Site since 1984 [3].",
+    "route": "place",
+    "entities": [
+      "Eiffel Tower",
+      "Statue of Liberty"
+    ],
+    "elapsed": 4.641839504241943
+  },
+  {
+    "label": "fail-1",
+    "query": "Who is the president of Mars",
+    "status": "PASS",
+    "msg": "",
+    "answer": "There is no information about the president of Mars in the provided context [1], [2], [3], [4], or [5]. I don't know based on the provided context.",
+    "route": "person",
+    "entities": [
+      "Cristiano Ronaldo",
+      "Jake Gyllenhaal",
+      "Nelson Mandela",
+      "Nikola Tesla",
+      "Sagopa Kajmer"
+    ],
+    "elapsed": 3.205003023147583
+  },
+  {
+    "label": "fail-2",
+    "query": "Tell me about a random unknown person John Doe",
+    "status": "PASS",
+    "msg": "",
+    "answer": "I don't know based on the provided context.",
+    "route": "person",
+    "entities": [
+      "Charles Darwin",
+      "Dwayne Johnson",
+      "Steve Jobs",
+      "Taylor Swift"
+    ],
+    "elapsed": 2.890733480453491
+  },
+  {
+    "label": "extra-1",
+    "query": "Who is Kemal Sunal",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Kemal Sunal was a Turkish actor and comedian who first attracted attention playing a side character in the drama film Canım Kardeşim (1973) [1]. He rose to fame as a leading actor in iconic Turkish comedy films such as Köyden İndim Şehire (1974), Mavi Boncuk (1974), and Hababam Sınıfı (1975) [1, 2]. Sunal's final acting role was in the drama film Propaganda (1999) [3], which also starred his son Ali Sunal as a junior customs officer [2]. Kemal Sunal kept himself and his family away from the media and rarely appeared in public, but his characters remain iconic in Turkish cinema, including \"Şaban\" in Hababam Sınıfı [4].",
+    "route": "person",
+    "entities": [
+      "Kemal Sunal"
+    ],
+    "elapsed": 4.610200881958008
+  },
+  {
+    "label": "extra-2",
+    "query": "Tell me about Sagopa Kajmer",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Sagopa Kajmer is a Turkish rapper, singer, songwriter, record producer, and DJ who was born in 1978 in Samsun and studied Persian language and literature at Istanbul University [1]. He has released several albums, including \"Pesimist - 10 Kurşun\" (2001), \"Bendeki Sen\" (2010) with Kolera, and \"Kalp Hastası\" (2013) [2]. Sagopa Kajmer's music style is described as a branch of Arabesque by Fuat Ergin, while Erol Köse calls him a \"hidden star\" [3]. He has also released several singles, including \"Ardından Bakarım\", \"Düşünmek İçin Vaktin Var\", and \"Oldu Olanlar\" [4]. The name Sagopa Kajmer is explained by Yunus Özyavuz as an ancient pyramid in Egypt, with the person searching for it being Kajmer [5].",
+    "route": "person",
+    "entities": [
+      "Sagopa Kajmer"
+    ],
+    "elapsed": 5.178842067718506
+  },
+  {
+    "label": "extra-3",
+    "query": "What is the Hagia Sophia",
+    "status": "PASS",
+    "msg": "",
+    "answer": "Hagia Sophia is a major cultural and historical site in Istanbul, Turkey, considered the epitome of Byzantine architecture [1]. It served as the cathedral of Constantinople from 360 until 1453, except for the period 1204–1261 when the Latin Crusaders installed their own hierarchy [1]. The current structure was built by the Byzantine emperor Justinian I between 532–537 and was designed by the Greek geometers Isidore of Miletus and Anthemius of Tralles [1]. In 2020, it was redesignated as a mosque after being a museum from 1935 to 2020 [2].",
+    "route": "place",
+    "entities": [
+      "Hagia Sophia"
+    ],
+    "elapsed": 4.1479833126068115
+  },
+  {
+    "label": "extra-4",
+    "query": "Where is the Galata Tower",
+    "status": "PASS",
+    "msg": "",
+    "answer": "The Galata Tower is located in Istanbul, Turkey. It was originally built as a watchtower at the highest point of the mostly demolished Walls of Galata [1]. The tower has been used for various purposes over the centuries, including as a prison and a lookout point for fires [3]. In 2020, it was restored and reopened as a museum, with a new visitor policy that caps entry at 100 per hour [4]. Today, the tower is mainly popular for its 360-degree view of Istanbul visible from its observation deck [5].",
+    "route": "place",
+    "entities": [
+      "Galata Tower"
+    ],
+    "elapsed": 4.078946590423584
+  }
+]

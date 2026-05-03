@@ -1,0 +1,93 @@
+{
+  "id": "f6c2f9bff2",
+  "updated": 1777817030.164337,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who is Albert Einstein?"
+    },
+    {
+      "role": "assistant",
+      "content": "Albert Einstein was a German-born theoretical physicist who developed the theory of relativity and made important contributions to quantum theory [1]. He received the 1921 Nobel Prize in Physics for his discovery of the law of the photoelectric effect [1]. Einstein's work on special relativity led to the famous mass-energy equivalence formula E = mc2, which has been called \"the world's most famous equation\" [1]. After World War II, he was included posthumously as a charter member of the World Academy of Art and Science [2].",
+      "meta": {
+        "route": "person",
+        "retrieve_ms": 2177.031999999599,
+        "generate_ms": 3946.748200000002,
+        "grounding_ms": 0.0,
+        "total_ms": 6132.21700000031,
+        "cached": false,
+        "grounded": false,
+        "grounding_dropped": 0,
+        "chunks": [
+          {
+            "id": 1,
+            "title": "Albert Einstein",
+            "section": "Introduction",
+            "type": "person",
+            "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+            "sources": [
+              "intro",
+              "dense",
+              "bm25"
+            ],
+            "score": 1.0,
+            "text": "Albert Einstein (14 March 1879 – 18 April 1955) was a German-born theoretical physicist best known for developing the theory of relativity. Einstein also made important contributions to quantum theory. His mass–energy equivalence formula E = mc2, which arises from special relativity, has been called \"the world's most famous equation\". He received the 1921 Nobel Prize in Physics for \"his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\". Born as a subject to the Kingdom of Württemberg, part of the German Empire, Einstein moved to Switzerland in 1895, forsaking his citizenship the following year. In 1897, at the age of seventeen, he enrolled in the mathematics and physics teaching diploma program at the Swiss federal polytechnic school in Zurich, graduating in 1900. He acquired Swiss citizenship a year later, which he kept for the rest of his life, and afterwards secured a permanent position at the Swiss Patent Office in Bern. In 1905, he submitted a successful PhD dissertation to the University of Zurich."
+          },
+          {
+            "id": 41,
+            "title": "Albert Einstein",
+            "section": "==== World War II and the Manhattan Project ====",
+            "type": "person",
+            "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+            "sources": [
+              "dense",
+              "bm25"
+            ],
+            "score": 0.03128054740957967,
+            "text": "In 1960 Einstein was included posthumously as a charter member of the World Academy of Art and Science (WAAS), an organization founded by distinguished scientists and intellectuals who committed themselves to the responsible and ethical advances of science, particularly in light of the development of nuclear weapons."
+          },
+          {
+            "id": 82,
+            "title": "Albert Einstein",
+            "section": "==== Bohr versus Einstein ====",
+            "type": "person",
+            "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+            "sources": [
+              "dense",
+              "bm25"
+            ],
+            "score": 0.030309988518943745,
+            "text": "The Bohr–Einstein debates were a series of public disputes about quantum mechanics between Einstein and Niels Bohr, who were two of its founders. Their debates are remembered because of their importance to the philosophy of science. Their debates would influence later interpretations of quantum mechanics."
+          },
+          {
+            "id": 38,
+            "title": "Albert Einstein",
+            "section": "==== Resident scholar at the Institute for Advanced Study ====",
+            "type": "person",
+            "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+            "sources": [
+              "dense",
+              "bm25"
+            ],
+            "score": 0.030309988518943745,
+            "text": "He was one of the four first selected (along with John von Neumann, Kurt Gödel and Hermann Weyl) at the new Institute. He soon developed a close friendship with Gödel; the two would take long walks together discussing their work. Bruria Kaufman, his assistant, later became a physicist. During this period, Einstein tried to develop a unified field theory and to refute the accepted interpretation of quantum physics, both unsuccessfully. He lived in Princeton at his home from 1935 onwards. The Albert Einstein House was made a National Historic Landmark in 1976."
+          },
+          {
+            "id": 11,
+            "title": "Albert Einstein",
+            "section": "=== Marriages, relationships and children ===",
+            "type": "person",
+            "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+            "sources": [
+              "dense",
+              "bm25"
+            ],
+            "score": 0.030017921146953404,
+            "text": "Correspondence between Einstein and Marić, discovered and published in 1987, revealed that the couple had a daughter named Lieserl. She was born in early 1902 while Marić was visiting her parents in Novi Sad. When Marić returned to Switzerland the child was no longer with her. What happened to Lieserl is uncertain. In a letter written in September 1903, Einstein suggested that the girl was either given up for adoption or died of scarlet fever in infancy. Einstein and Marić married in January 1903. In May 1904, their son Hans Albert was born in Bern, Switzerland. Their son Eduard was born in Zurich in July 1910. In letters that Einstein wrote to Marie Winteler in the months before Eduard's arrival, he described his love for his wife as \"misguided\" and mourned the \"missed life\" that he imagined he would have enjoyed if he had married Winteler instead: \"I think of you in heartfelt love every spare minute and am so unhappy as only a man can be.\"\nIn 1912, Einstein entered into a relationship with Elsa Löwenthal, who was both his first cousin on his mother's side and his second cousin on his father's. When Marić learned of his infidelity soon after moving to Berlin with him in April 1914, she returned to Zurich, taking Hans Albert and Eduard with her."
+          }
+        ],
+        "model": "llama3.2:3b"
+      }
+    }
+  ]
+}
