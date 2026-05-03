@@ -70,7 +70,7 @@ The dashed arrows show metadata reads from the SQLite store; everything else is 
 ## What it does
 
 1. **Ingests** 30 famous people + 30 famous places from Wikipedia (configurable).
-2. **Chunks** each article with a paragraph-aware sliding window (target ≈220 tokens, ≈40 token overlap).
+2. **Chunks** each article with a paragraph-aware sliding window (target ≈320 tokens, ≈60 token overlap).
 3. **Embeds** every chunk with a local `nomic-embed-text` model running under Ollama.
 4. **Stores** chunks + embeddings in a hand-rolled SQLite + NumPy vector store (no Chroma, no pgvector).
 5. **Routes** each query to *person*, *place*, *mixed*, or *unknown* using rule + entity-name matching.
@@ -123,20 +123,28 @@ The brief lists 8 optional extensions. We implement all 8 plus 7 additional poli
 ├── data/
 │   ├── people.txt              # 30 entities
 │   ├── places.txt              # 30 entities
-│   └── raw/                    # cached Wikipedia JSONs (gitignored)
+│   ├── raw/                    # cached Wikipedia JSONs (gitignored)
+│   ├── conversations/          # persistent chat history (gitignored)
+│   └── logs/                   # rag.jsonl structured logs (gitignored)
 ├── scripts/
 │   ├── setup.sh                # macOS / Linux quickstart
 │   └── setup.ps1               # Windows PowerShell quickstart
+├── tests/
+│   ├── test_unit.py            # chunker, BM25, router, store, citation, fuzzy, persistence
+│   ├── test_e2e.py             # 20 example queries against the live pipeline
+│   ├── test_extensions.py      # 8 optional extensions verified
+│   └── debug_chunks.py         # dump retrieved chunks for a query
 └── src/
     ├── config.py
-    ├── ingest/   wikipedia.py · run_ingest.py
-    ├── chunk/    chunker.py
-    ├── embed/    embedder.py
-    ├── store/    vector_store.py
-    ├── retrieve/ router.py · bm25.py · retriever.py
-    ├── generate/ llm.py · pipeline.py
-    ├── cache/    response_cache.py
-    └── ui/       cli.py · streamlit_app.py
+    ├── log.py                  # structured JSON-line logging
+    ├── ingest/    wikipedia.py · run_ingest.py
+    ├── chunk/     chunker.py
+    ├── embed/     embedder.py
+    ├── store/     vector_store.py
+    ├── retrieve/  router.py · bm25.py · retriever.py · reranker.py
+    ├── generate/  llm.py · pipeline.py · grounding.py
+    ├── cache/     response_cache.py
+    └── ui/        cli.py · streamlit_app.py · health.py · persistence.py
 ```
 
 ---
@@ -215,7 +223,7 @@ Useful flags:
 | `--only people`  | Only ingest people.                                                    |
 | `--only places`  | Only ingest places.                                                    |
 
-Expected runtime on a modern laptop: **2–5 minutes** for the full 60-entity corpus, dominated by embedding throughput (Ollama, CPU).
+Expected runtime on a modern laptop: **~2 minutes** for the full 60-entity corpus (≈3 000 chunks) using Ollama's batch embedding endpoint.
 
 ---
 
@@ -227,7 +235,13 @@ Expected runtime on a modern laptop: **2–5 minutes** for the full 60-entity co
 streamlit run src/ui/streamlit_app.py
 ```
 
-Then open <http://localhost:8501>. The sidebar exposes every extension: model selection, "compare two models", top-K, streaming toggle, response cache toggle, "show retrieved context", chat-clear, cache-wipe, and live store statistics.
+Then open <http://localhost:8501>. The app has three pages, switchable from the sidebar:
+
+- **💬 Chat** — main RAG chat with model selection, "compare two models" toggle, top-K slider, streaming toggle, response-cache toggle, **🔬 self-grounding check** toggle, **🎯 cross-encoder reranker** toggle, "show retrieved context", clear-chat, wipe-cache, **export conversation as Markdown**, **past conversations list**, **entity quick-launch** (60 clickable entities), **pre-computed example chips** on first launch.
+- **⚡ Latency Dashboard** — live charts and table of recent retrieve / generate / grounding timings, read from `data/logs/rag.jsonl`.
+- **📐 About** — architecture overview, design rationale, model status, corpus stats.
+
+A **system status panel** at the top of the sidebar runs health checks (Ollama reachable? models pulled? store populated?) and refuses to chat if anything critical is missing.
 
 ### Option B — CLI
 
@@ -291,12 +305,33 @@ CLI commands:
 | Embeddings | `nomic-embed-text` via Ollama | Same runtime as the LLM, 768-d, strong on Wikipedia-style English. |
 | Vector store | SQLite + NumPy (no Chroma) | The brief asks for native functionality; ~150 LoC, exact cosine, single process, single file. |
 | Vector layout | **One** store, `type` metadata (Option B) | Keeps mixed/comparison questions trivial — same store, optional filter. |
-| Chunking | Paragraph-aware sliding window, ~220 tokens, ~40 overlap | Wikipedia paragraphs are coherent — preserve them; sentence-fall-back when a paragraph is oversized. |
+| Chunking | Paragraph-aware sliding window, ~320 tokens, ~60 overlap | Wikipedia paragraphs are coherent — preserve them; sentence-fall-back when a paragraph is oversized. |
 | Routing | Rule-based: entity-name regex + keyword cues | Cheap, deterministic, zero-extra-LLM, exactly what the brief permits. |
 | Retrieval | Dense + BM25 fused with RRF, k=60 | Dense for semantics, BM25 for rare proper nouns; RRF avoids score calibration. |
-| Hallucination guard | Strict system prompt + empty-context short-circuit | Returns the "I don't know" sentinel exactly as required. |
+| Hallucination guard | Strict system prompt + empty-context short-circuit + paraphrase normaliser + optional self-grounding pass | Returns the canonical "I don't know based on the provided context." sentinel exactly as required by the brief. |
+| Embedding prefixes | `search_query: ` / `search_document: ` for `nomic-embed-text` | The model is task-conditioned — using the prefixes the model was trained for measurably improves retrieval. |
+| Typo handling | Levenshtein-tolerant entity matching in the router | Lets `sagopa kajmet`, `picasoo`, `einsteen` route correctly without an LLM rewrite step. |
 
 See [`recommendation.md`](recommendation.md) for production-deployment notes and [`Product_prd.md`](Product_prd.md) for the requirements view.
+
+---
+
+## Tests
+
+Three suites are included; run them in this order:
+
+```bash
+# 1. Unit tests — no Ollama, no store needed (≤5s)
+python tests/test_unit.py
+
+# 2. End-to-end tests — needs Ollama + populated store (~90s, 20 queries)
+python tests/test_e2e.py
+
+# 3. Optional-extension verification — needs Ollama + store (~60s)
+python tests/test_extensions.py
+```
+
+The extension suite explicitly verifies streaming, citations, chat-history pronoun resolution, dual-model compare, latency reporting, response caching, hybrid retrieval ranking and intro-chunk guarantee, and multi-entity comparison routing.
 
 ---
 
@@ -308,7 +343,7 @@ python -m src.ingest.run_ingest --reset
 
 # Or, manually:
 rm data/rag.db data/cache.db
-rm -rf data/raw/
+rm -rf data/raw/ data/conversations/ data/logs/
 ```
 
 ---
