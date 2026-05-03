@@ -11,32 +11,32 @@ A ChatGPT-style assistant that answers questions about famous people and famous 
 ```mermaid
 flowchart TB
     subgraph Ingest["🌐 Ingest (one-time)"]
-        WIKI[(Wikipedia REST API)]
-        FETCH[wikipedia.py<br/>requests + retry + cache]
-        STRIP[strip_wiki_artifacts<br/>citation markers, see-also]
-        CHUNK[chunker.py<br/>paragraph-aware sliding window<br/>~320 tok / ~60 overlap]
+        WIKI[("Wikipedia REST API")]
+        FETCH["wikipedia.py<br/>requests + retry + cache"]
+        STRIP["strip_wiki_artifacts<br/>citation markers, see-also"]
+        CHUNK["chunker.py<br/>paragraph-aware sliding window<br/>~320 tok / ~60 overlap"]
         WIKI --> FETCH --> STRIP --> CHUNK
     end
 
     subgraph Embed["🧮 Embed"]
-        EMB[embedder.py<br/>nomic-embed-text via Ollama<br/>search_query / search_document prefixes<br/>batch via /api/embed]
+        EMB["embedder.py<br/>nomic-embed-text via Ollama<br/>search_query / search_document prefixes<br/>batch via /api/embed"]
         CHUNK --> EMB
     end
 
     subgraph Store["💾 Local store"]
-        SQL[(SQLite chunks<br/>+ embedding BLOB)]
+        SQL[("SQLite chunks<br/>+ embedding BLOB")]
         EMB --> SQL
     end
 
     subgraph Query["🔎 Query path"]
-        Q[User query]
-        ROUTER[router.py<br/>fuzzy entity match + keyword cues<br/>→ person / place / mixed]
-        AUG[history augmenter<br/>pronoun → entity carry-over]
-        DENSE[Dense retrieval<br/>numpy matmul cosine]
-        BM25[bm25.py<br/>hand-rolled k1=1.5 b=0.75]
-        INTRO[Intro-chunk guarantee<br/>position=0 chunk forced in]
-        RRF[Reciprocal Rank Fusion<br/>k = 60]
-        RER["(optional) cross-encoder<br/>top-20 → top-K"]
+        Q["User query"]
+        ROUTER["router.py<br/>fuzzy entity match + keyword cues<br/>person / place / mixed"]
+        AUG["history augmenter<br/>pronoun -> entity carry-over"]
+        DENSE["Dense retrieval<br/>numpy matmul cosine"]
+        BM25["bm25.py<br/>hand-rolled k1=1.5 b=0.75"]
+        INTRO["Intro-chunk guarantee<br/>position=0 chunk forced in"]
+        RRF["Reciprocal Rank Fusion<br/>k = 60"]
+        RER["(optional) cross-encoder<br/>top-20 to top-K"]
         Q --> AUG --> ROUTER
         ROUTER --> DENSE
         ROUTER --> BM25
@@ -48,11 +48,11 @@ flowchart TB
     end
 
     subgraph Generate["💬 Generate"]
-        PROMPT[Prompt builder<br/>system rules + numbered context + history]
-        LLM[llama3.2:3b via Ollama<br/>streaming]
-        REF[Refusal normaliser]
+        PROMPT["Prompt builder<br/>system rules + numbered context + history"]
+        LLM["llama3.2:3b via Ollama<br/>streaming"]
+        REF["Refusal normaliser"]
         GR["(optional) self-grounding<br/>drop unsupported sentences"]
-        CACHE[(SQLite response cache<br/>sha256 query‖chunks‖model)]
+        CACHE[("SQLite response cache<br/>sha256 of query, chunks, model")]
         RER --> PROMPT --> LLM --> REF --> GR
         GR --> CACHE
     end
@@ -60,8 +60,8 @@ flowchart TB
     SQL -.cosine.-> DENSE
     SQL -.text.-> BM25
     SQL -.position=0.-> INTRO
-    GR --> ANS([Answer with [N] citations])
-    LOG[(JSONL log<br/>data/logs/rag.jsonl)]
+    GR --> ANS(["Answer with bracketed citations"])
+    LOG[("JSONL log<br/>data/logs/rag.jsonl")]
     LLM -.write.-> LOG
 ```
 
