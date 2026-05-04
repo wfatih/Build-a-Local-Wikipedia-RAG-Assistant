@@ -359,7 +359,7 @@ rm -rf data/raw/ data/conversations/ data/logs/
 
 ## Demo video
 
-`<link will be added here>`
+📺 **<https://youtu.be/5JZ2ktCqlZM>**
 
 The video walks through:
 

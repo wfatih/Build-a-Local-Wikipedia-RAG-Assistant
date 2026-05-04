@@ -1,0 +1,7 @@
+Ad Soyad: Fatih Çakır
+Numara: 150220086
+Ders: BLG483E - Artificial Intelligence Aided Computer Engineering
+Ödev: Project 3 - Local Wikipedia RAG Assistant
+
+GitHub Repo:
+https://github.com/wfatih/Build-a-Local-Wikipedia-RAG-Assistant
